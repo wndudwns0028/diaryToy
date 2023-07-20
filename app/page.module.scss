@@ -1,0 +1,39 @@
+.pageContainer {
+  width: 1920px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .bannerBox {
+    width: 95%;
+    height: 70%;
+    background-color: blueviolet;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    font-weight: 700;
+  }
+
+  & .serviceBox {
+    width: 95%;
+    height: 30%;
+    background-color: chocolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .serviceMenu {
+      width: 30%;
+      height: 80%;
+      background-color: darksalmon;
+      margin-inline: 2%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40px;
+      font-weight: 700;
+    }
+  }
+}

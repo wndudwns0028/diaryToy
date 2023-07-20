@@ -1,0 +1,60 @@
+.navContainer {
+  width: 100%;
+  height: 8vh;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .logoBox {
+    width: 10%;
+    height: 80%;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .logo {
+      text-decoration: none;
+    }
+  }
+
+  & .menuBox {
+    width: 70%;
+    height: 80%;
+    background-color: chocolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .menuText {
+      text-decoration: none;
+      color: black;
+      font-size: large;
+      font-weight: 600;
+      margin-inline: 4%;
+      transition: color 0.2s ease-in-out;
+      &:hover {
+        color: gray;
+      }
+    }
+  }
+
+  & .accountBox {
+    width: 20%;
+    height: 80%;
+    background-color: darkgoldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .loginBtn {
+      text-decoration: none;
+      color: black;
+      font-size: large;
+      font-weight: 600;
+      transition: color 0.2s ease-in-out;
+      &:hover {
+        color: rgb(99, 0, 124);
+      }
+    }
+  }
+}
