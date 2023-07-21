@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
+import { useSession } from "next-auth/react";
+import LoginBtn from "../auth/LoginBtn";
 
 export default function Navbar() {
   return (
@@ -24,11 +26,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className={styles.accountBox}>
-        <div>
-          <Link href={"/login"} className={styles.loginBtn}>
-            로그인
-          </Link>
-        </div>
+        <LoginBtn />
       </div>
     </div>
   );
