@@ -1,5 +1,11 @@
 import { MongoClient, MongoClientOptions } from "mongodb";
-
+export interface User {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  // Other properties as needed
+}
 const url =
   "mongodb+srv://admin:root1234@diary.xx54irx.mongodb.net/mydatabase?retryWrites=true&w=majority";
 const options: MongoClientOptions = {}; // No need to specify `useNewUrlParser` here

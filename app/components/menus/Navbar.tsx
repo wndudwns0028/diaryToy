@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import { useSession } from "next-auth/react";
-import LoginBtn from "../auth/LoginBtn";
+import LoginBtn from "./LoginBtn";
 
 export default function Navbar() {
   return (

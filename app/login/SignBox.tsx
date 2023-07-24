@@ -22,7 +22,7 @@ export default function SignBox() {
         id="container"
       >
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form action="/api/auth/signup" method="POST">
             <h1>회원정보입력</h1>
             <input type="text" placeholder="이름" />
             <input type="email" placeholder="이메일" />
