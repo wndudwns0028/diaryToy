@@ -2,9 +2,11 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import styles from "./LoginBtn.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function LoginBtn() {
   const { data: session } = useSession();
+  const router = useRouter();
   console.log(session);
   return (
     <>
@@ -16,7 +18,10 @@ export default function LoginBtn() {
           </button>
         </div>
       ) : (
-        <button className={styles.loginBtn} onClick={() => signIn()}>
+        <button
+          className={styles.loginBtn}
+          onClick={() => router.push(`/login`)}
+        >
           로그인
         </button>
       )}

@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.103) 0px 10px 20px,
+    rgba(0, 0, 0, 0.068) 0px 6px 6px;
 
   & .logoBox {
     width: 10%;
