@@ -1,5 +1,6 @@
+import { MongoClient } from "mongodb";
 import styles from "./page.module.scss";
 
-export default function Notice() {
-  return <div className={styles.pageContainer}>공지사항</div>;
+export default async function Notice() {
+  return <div className={styles.pageContainer}>{}</div>;
 }

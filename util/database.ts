@@ -1,30 +1,25 @@
-import { MongoClient, MongoClientOptions } from "mongodb";
-export interface User {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  // Other properties as needed
+import mongoose from "mongoose";
+
+const DB_URI = process.env.MONGODB_URI || "";
+
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
-const url =
-  "mongodb+srv://admin:root1234@diary.xx54irx.mongodb.net/mydatabase?retryWrites=true&w=majority";
-const options: MongoClientOptions = {}; // No need to specify `useNewUrlParser` here
 
-let connectDB: MongoClient | undefined;
+async function dbConnect() {
+  if (cached.conn) return cached.conn;
 
-async function connectToDatabase() {
-  try {
-    if (!connectDB) {
-      connectDB = await MongoClient.connect(url, options);
-      console.log("Connected to MongoDB successfully!");
-    }
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    // Handle the error as needed (e.g., throw, retry, etc.)
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .set({ debug: true, strictQuery: false })
+      .connect(`${DB_URI}`)
+      .then((mongoose) => mongoose);
   }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
 
-// Call the function to establish the connection
-connectToDatabase();
-
-export { connectDB };
+export default dbConnect;

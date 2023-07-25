@@ -20,6 +20,7 @@
     "eslint-config-next": "13.4.10",
     "framer-motion": "^10.13.0",
     "mongodb": "^5.7.0",
+    "mongoose": "^7.4.1",
     "next": "13.4.10",
     "next-auth": "^4.22.3",
     "react": "18.2.0",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
+    "@types/mongoose": "^5.11.97",
     "@types/next": "^9.0.0",
     "@types/next-auth": "^3.15.0"
   }
