@@ -2,9 +2,13 @@
 
 import { useState } from "react";
 import "./SignBox.css";
+import axios from "axios";
 
 export default function SignBox() {
   const [isRightPanelActive, setRightPanelActive] = useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const handleSignUpClick = () => {
     setRightPanelActive(true);
@@ -12,6 +16,16 @@ export default function SignBox() {
 
   const handleSignInClick = () => {
     setRightPanelActive(false);
+  };
+
+  const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log(1);
+    fetch("/api/auth/signup", {
+      method: "POST",
+      body: JSON.stringify({ name: name, email: email, password: password }),
+    });
   };
   return (
     <div className="pageContainer">
@@ -22,14 +36,29 @@ export default function SignBox() {
         id="container"
       >
         <div className="form-container sign-up-container">
-          <form action="/api/auth/signup" method="POST">
+          <form onSubmit={handleSignup}>
             <h1>회원정보입력</h1>
-            <input type="text" placeholder="이름" />
-            <input type="email" placeholder="이메일" />
-            <input type="password" placeholder="비밀번호" />
+            <input
+              type="text"
+              placeholder="이름"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="이메일"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="패스워드"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <br />
             <br />
-            <button>회원가입</button>
+            <button type="submit">회원가입</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
