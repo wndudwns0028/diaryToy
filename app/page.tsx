@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "./page.module.scss";
+import Slides from "./components/BootStrap/Slides";
 
 export default function Home() {
   return (
@@ -16,7 +17,9 @@ export default function Home() {
       </Head>
       <main>
         <div className={styles.pageContainer}>
-          <div className={styles.bannerBox}>메인페이지 배너임</div>
+          <div className={styles.bannerBox}>
+            <Slides />
+          </div>
           <div className={styles.serviceBox}>
             <div className={styles.serviceMenu}>서비스 이동 버튼임</div>
             <div className={styles.serviceMenu}>서비스 이동 버튼임</div>
