@@ -1,9 +1,8 @@
-"use client";
-
 import { MongoClient } from "mongodb";
 import styles from "./page.module.scss";
 import BoardTable from "../components/BootStrap/BoardTable";
 import Paginations from "../components/BootStrap/Pagination";
+import { SSRProvider } from "react-bootstrap";
 
 export default function Notice() {
   return (
