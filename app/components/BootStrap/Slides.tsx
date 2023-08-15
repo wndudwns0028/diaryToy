@@ -3,7 +3,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import Test from "@/public/static/images/test.png";
 import Image from "next/image";
-import { SSRProvider } from "react-bootstrap";
+import { Button, SSRProvider } from "react-bootstrap";
 import styles from "./Slides.module.scss";
 import Box from "@/public/static/images/Box.png";
 import Camera from "@/public/static/images/Camera.png";
@@ -45,9 +45,14 @@ function Slides() {
         <Carousel.Item>
           <div className={styles.bannerBox}>
             <div className={styles.titleBox}>
-              <div className={styles.titleText}>Title</div>
-              <div className={styles.subTitle}>Subtitle</div>
-              <div className={styles.linkButton}>Button</div>
+              <div className={styles.titleText}>서비스 타이틀</div>
+              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+              <div className={styles.linkButton}>
+                {" "}
+                <Button variant="light" className={styles.titleBtn}>
+                  서비스 자세히보기 &nbsp; &gt;
+                </Button>
+              </div>
             </div>
             <div className={styles.bannerImage}>
               <Image
@@ -67,9 +72,13 @@ function Slides() {
         <Carousel.Item>
           <div className={styles.bannerBox}>
             <div className={styles.titleBox}>
-              <div className={styles.titleText}>Title</div>
-              <div className={styles.subTitle}>Subtitle</div>
-              <div className={styles.linkButton}>Button</div>
+              <div className={styles.titleText}>서비스 타이틀</div>
+              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+              <div className={styles.linkButton}>
+                <Button variant="light" className={styles.titleBtn}>
+                  서비스 자세히보기 &nbsp; &gt;
+                </Button>
+              </div>
             </div>
             <div className={styles.bannerImage}>
               <Image
@@ -89,9 +98,13 @@ function Slides() {
         <Carousel.Item>
           <div className={styles.bannerBox}>
             <div className={styles.titleBox}>
-              <div className={styles.titleText}>Title</div>
-              <div className={styles.subTitle}>Subtitle</div>
-              <div className={styles.linkButton}>Button</div>
+              <div className={styles.titleText}>서비스 타이틀</div>
+              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+              <div className={styles.linkButton}>
+                <Button variant="light" className={styles.titleBtn}>
+                  서비스 자세히보기 &nbsp; &gt;{" "}
+                </Button>
+              </div>
             </div>
             <div className={styles.bannerImage}>
               <Image

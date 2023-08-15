@@ -21,8 +21,8 @@ export default function Home() {
             <Slides />
           </div>
           <div className={styles.serviceBox}>
-            <div className={styles.serviceMenu}>서비스 이동 버튼임</div>
-            <div className={styles.serviceMenu}>서비스 이동 버튼임</div>
+            <div className={styles.serviceMenu}>서비스 소개 링크</div>
+            <div className={styles.serviceMenu}>서비스 소개 링크</div>
           </div>
         </div>
       </main>

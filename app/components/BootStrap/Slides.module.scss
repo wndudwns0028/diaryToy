@@ -5,11 +5,27 @@
   & .titleBox {
     width: 40%;
     height: 100%;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    color: white;
+    margin-left: 5%;
+    & .titleText {
+      font-size: 1em;
+    }
+    & .subTitle {
+      font-size: x-large;
+    }
+    & .linkButton {
+      & .titleBtn {
+        margin-top: 10rem;
+        padding-inline: 2rem;
+        padding-block: 1rem;
+        font-size: large;
+        font-weight: 600;
+      }
+    }
   }
   & .bannerImage {
     width: 60%;
