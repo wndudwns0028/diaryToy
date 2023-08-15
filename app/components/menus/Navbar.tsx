@@ -2,8 +2,10 @@ import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import { useSession } from "next-auth/react";
 import LoginBtn from "./LoginBtn";
+import CustomButton from "../BootStrap/CustomButton";
 
 export default function Navbar() {
+  function handleLoginBtn() {}
   return (
     <div className={styles.navContainer}>
       <div className={styles.logoBox}>
@@ -26,7 +28,9 @@ export default function Navbar() {
         </Link>
       </div>
       <div className={styles.accountBox}>
-        <LoginBtn />
+        <Link href={"/login"}>
+          <CustomButton btnText={"로그인"} />
+        </Link>
       </div>
     </div>
   );
