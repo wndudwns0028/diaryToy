@@ -1,0 +1,21 @@
+.bannerBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  & .titleBox {
+    width: 40%;
+    height: 100%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  & .bannerImage {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

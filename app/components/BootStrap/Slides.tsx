@@ -4,30 +4,109 @@ import Carousel from "react-bootstrap/Carousel";
 import Test from "@/public/static/images/test.png";
 import Image from "next/image";
 import { SSRProvider } from "react-bootstrap";
+import styles from "./Slides.module.scss";
+import Box from "@/public/static/images/Box.png";
+import Camera from "@/public/static/images/Camera.png";
+import Book from "@/public/static/images/Book.png";
+import { useEffect, useRef, useState } from "react";
 
 function Slides() {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const [topPosition, setTopPosition] = useState(0);
+  const amplitude = 20; // 움직임의 최대 높이
+
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      // 위아래 둥둥 떠다니는 애니메이션 로직 설정
+      setTopPosition((prevTopPosition) =>
+        prevTopPosition === 0 ? amplitude : 0
+      );
+    }, 1000); // 1초마다 위치 갱신
+
+    return () => {
+      clearInterval(animationInterval);
+    };
+  }, []);
+
   return (
     <SSRProvider>
-      <Carousel style={{ width: "100%", height: "100%", position: "relative" }}>
+      <Carousel
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          borderRadius: "25px",
+          overflow: "hidden",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Carousel.Item>
-          <Image src={Test} alt="" objectFit="fill" />
-          <Carousel.Caption>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
+          <div className={styles.bannerBox}>
+            <div className={styles.titleBox}>
+              <div className={styles.titleText}>Title</div>
+              <div className={styles.subTitle}>Subtitle</div>
+              <div className={styles.linkButton}>Button</div>
+            </div>
+            <div className={styles.bannerImage}>
+              <Image
+                src={Box}
+                alt=""
+                width={400}
+                height={400}
+                ref={imageRef}
+                style={{
+                  transform: `translateY(-${topPosition}px)`,
+                  transition: "transform 1s ease-in-out",
+                }}
+              />
+            </div>
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={Test} alt="" objectFit="fill" />
-          <Carousel.Caption>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
+          <div className={styles.bannerBox}>
+            <div className={styles.titleBox}>
+              <div className={styles.titleText}>Title</div>
+              <div className={styles.subTitle}>Subtitle</div>
+              <div className={styles.linkButton}>Button</div>
+            </div>
+            <div className={styles.bannerImage}>
+              <Image
+                src={Book}
+                alt=""
+                width={400}
+                height={400}
+                ref={imageRef}
+                style={{
+                  transform: `translateY(-${topPosition}px)`,
+                  transition: "transform 1s ease-in-out",
+                }}
+              />
+            </div>
+          </div>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={Test} alt="" objectFit="fill" />
-          <Carousel.Caption>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <div className={styles.bannerBox}>
+            <div className={styles.titleBox}>
+              <div className={styles.titleText}>Title</div>
+              <div className={styles.subTitle}>Subtitle</div>
+              <div className={styles.linkButton}>Button</div>
+            </div>
+            <div className={styles.bannerImage}>
+              <Image
+                src={Camera}
+                alt=""
+                width={400}
+                height={400}
+                ref={imageRef}
+                style={{
+                  transform: `translateY(-${topPosition}px)`,
+                  transition: "transform 1s ease-in-out",
+                }}
+              />
+            </div>
+          </div>
         </Carousel.Item>
       </Carousel>
     </SSRProvider>
