@@ -1,10 +1,15 @@
+"use client";
 import { MongoClient } from "mongodb";
 import styles from "./page.module.scss";
 import BoardTable from "../components/BootStrap/BoardTable";
 import Paginations from "../components/BootStrap/Pagination";
 import { SSRProvider } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function Notice() {
+  useEffect(() => {
+    fetch("/api/board/notice").then((r) => console.log(r));
+  }, []);
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageBox}>
