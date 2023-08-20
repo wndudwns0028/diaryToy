@@ -1,24 +1,16 @@
 import { ObjectId, Db } from "mongodb";
-import connectDB from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
-import Notices from "@/app/models/Notices";
+import { connectDB } from "@/util/database";
 
-export async function GET(req: NextRequest) {
-  try {
-    if (!_mongo) {
-      throw new Error("MongoDB connection not established.");
-    }
-
-    const client = await _mongo;
-    const db: Db = client.db("Boards");
-    const noticeCollection = db.collection("notice");
-    let result = noticeCollection.find().toArray();
-
-    return NextResponse.json(result);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json("error", {
-      status: 500,
-    });
-  }
+export async function GET() {
+  const db = (await connectDB).db("Boards");
+  const queryResult = await db.collection("notice").find().toArray();
+  const processedResult = queryResult.map((item) => ({
+    _id: String(item._id),
+    title: item.title,
+    content: item.content,
+    views: item.views,
+    date: item.date,
+  }));
+  return NextResponse.json(processedResult);
 }

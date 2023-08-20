@@ -3,21 +3,21 @@ import mongoose, { Document, model, Model, Schema } from "mongoose";
 export interface INotices extends Document {
   title: string;
   content: string;
-  view: number;
+  views: number;
   date: string;
 }
 
-const NoticesSchema: Schema = new Schema({
-  title: {
-    type: String,
+const NoticesSchema: Schema = new Schema(
+  {
+    title: String,
+    content: String,
+    views: Number,
+    date: String,
   },
-  date: {
-    type: String,
-  },
-  content: {
-    type: String,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 export default mongoose.models.Notices ||
   mongoose.model("Notices", NoticesSchema);

@@ -1,15 +1,14 @@
-"use client";
 import { MongoClient } from "mongodb";
 import styles from "./page.module.scss";
 import BoardTable from "../components/BootStrap/BoardTable";
 import Paginations from "../components/BootStrap/Pagination";
 import { SSRProvider } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { connectDB } from "@/util/database";
+import { BoardType } from "../types/boardTypes";
+import NoticeWrapper from "./NoticeWrapper";
 
 export default function Notice() {
-  useEffect(() => {
-    fetch("/api/board/notice").then((r) => console.log(r));
-  }, []);
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageBox}>
@@ -19,7 +18,7 @@ export default function Notice() {
         <div className="divideLine" />
         <div className={styles.noticeBox}>
           <div className={styles.tableWrapper}>
-            <BoardTable />
+            <NoticeWrapper />
           </div>
           <div className={styles.pagenationWrapper}>
             <Paginations />
