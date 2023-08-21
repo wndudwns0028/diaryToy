@@ -29,100 +29,98 @@ function Slides() {
   }, []);
 
   return (
-    <SSRProvider>
-      <Carousel
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "relative",
-          borderRadius: "25px",
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Carousel.Item>
-          <div className={styles.bannerBox}>
-            <div className={styles.titleBox}>
-              <div className={styles.titleText}>서비스 타이틀</div>
-              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
-              <div className={styles.linkButton}>
-                {" "}
-                <Button variant="light" className={styles.titleBtn}>
-                  서비스 자세히보기 &nbsp; &gt;
-                </Button>
-              </div>
-            </div>
-            <div className={styles.bannerImage}>
-              <Image
-                src={Box}
-                alt=""
-                width={400}
-                height={400}
-                ref={imageRef}
-                style={{
-                  transform: `translateY(-${topPosition}px)`,
-                  transition: "transform 1s ease-in-out",
-                }}
-              />
+    <Carousel
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        borderRadius: "25px",
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Carousel.Item>
+        <div className={styles.bannerBox}>
+          <div className={styles.titleBox}>
+            <div className={styles.titleText}>서비스 타이틀</div>
+            <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+            <div className={styles.linkButton}>
+              {" "}
+              <Button variant="light" className={styles.titleBtn}>
+                서비스 자세히보기 &nbsp; &gt;
+              </Button>
             </div>
           </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className={styles.bannerBox}>
-            <div className={styles.titleBox}>
-              <div className={styles.titleText}>서비스 타이틀</div>
-              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
-              <div className={styles.linkButton}>
-                <Button variant="light" className={styles.titleBtn}>
-                  서비스 자세히보기 &nbsp; &gt;
-                </Button>
-              </div>
-            </div>
-            <div className={styles.bannerImage}>
-              <Image
-                src={Book}
-                alt=""
-                width={400}
-                height={400}
-                ref={imageRef}
-                style={{
-                  transform: `translateY(-${topPosition}px)`,
-                  transition: "transform 1s ease-in-out",
-                }}
-              />
+          <div className={styles.bannerImage}>
+            <Image
+              src={Box}
+              alt=""
+              width={400}
+              height={400}
+              ref={imageRef}
+              style={{
+                transform: `translateY(-${topPosition}px)`,
+                transition: "transform 1s ease-in-out",
+              }}
+            />
+          </div>
+        </div>
+      </Carousel.Item>
+      <Carousel.Item>
+        <div className={styles.bannerBox}>
+          <div className={styles.titleBox}>
+            <div className={styles.titleText}>서비스 타이틀</div>
+            <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+            <div className={styles.linkButton}>
+              <Button variant="light" className={styles.titleBtn}>
+                서비스 자세히보기 &nbsp; &gt;
+              </Button>
             </div>
           </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className={styles.bannerBox}>
-            <div className={styles.titleBox}>
-              <div className={styles.titleText}>서비스 타이틀</div>
-              <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
-              <div className={styles.linkButton}>
-                <Button variant="light" className={styles.titleBtn}>
-                  서비스 자세히보기 &nbsp; &gt;{" "}
-                </Button>
-              </div>
-            </div>
-            <div className={styles.bannerImage}>
-              <Image
-                src={Camera}
-                alt=""
-                width={400}
-                height={400}
-                ref={imageRef}
-                style={{
-                  transform: `translateY(-${topPosition}px)`,
-                  transition: "transform 1s ease-in-out",
-                }}
-              />
+          <div className={styles.bannerImage}>
+            <Image
+              src={Book}
+              alt=""
+              width={400}
+              height={400}
+              ref={imageRef}
+              style={{
+                transform: `translateY(-${topPosition}px)`,
+                transition: "transform 1s ease-in-out",
+              }}
+            />
+          </div>
+        </div>
+      </Carousel.Item>
+      <Carousel.Item>
+        <div className={styles.bannerBox}>
+          <div className={styles.titleBox}>
+            <div className={styles.titleText}>서비스 타이틀</div>
+            <div className={styles.subTitle}>서브 타이트 텍스트 위치</div>
+            <div className={styles.linkButton}>
+              <Button variant="light" className={styles.titleBtn}>
+                서비스 자세히보기 &nbsp; &gt;{" "}
+              </Button>
             </div>
           </div>
-        </Carousel.Item>
-      </Carousel>
-    </SSRProvider>
+          <div className={styles.bannerImage}>
+            <Image
+              src={Camera}
+              alt=""
+              width={400}
+              height={400}
+              ref={imageRef}
+              style={{
+                transform: `translateY(-${topPosition}px)`,
+                transition: "transform 1s ease-in-out",
+              }}
+            />
+          </div>
+        </div>
+      </Carousel.Item>
+    </Carousel>
   );
 }
 

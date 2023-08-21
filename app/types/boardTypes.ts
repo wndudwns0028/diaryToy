@@ -1,9 +1,9 @@
 export type BoardType = {
-  _id: String;
-  title: String;
-  content: String;
+  _id: string;
+  title: string;
+  content: string;
   views: number;
-  date: String;
+  date: string;
 };
 
 export interface BoardTableProps {

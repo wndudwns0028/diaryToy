@@ -1,0 +1,59 @@
+.pageContainer {
+  min-height: 150vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10em;
+  & .BannerWrapper {
+    width: 80%;
+    height: 15em;
+    background-color: rgb(129, 129, 129);
+    display: flex;
+    align-items: center;
+  }
+  & .routeBox {
+    width: 80%;
+    height: 3em;
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+  }
+  & .writingBox {
+    width: 80%;
+    height: 90vh;
+    margin-bottom: 5em;
+    & .titleArea {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      margin-block: 3em;
+      justify-content: center;
+      margin-left: 15%;
+    }
+    & .writingArea {
+      width: 70%;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      margin-left: 15%;
+      & .editor {
+        min-height: 80vh;
+        height: auto;
+        border: 1.5px solid rgb(194, 194, 194);
+        padding: 2em;
+        border-radius: 7px;
+      }
+    }
+    & .btnGroup {
+      height: 10%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(123, 95, 160);
+      margin-block: 5em;
+    }
+  }
+}
+.title {
+  margin-bottom: 2%;
+}

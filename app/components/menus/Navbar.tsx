@@ -29,7 +29,7 @@ export default function Navbar() {
       </div>
       <div className={styles.accountBox}>
         <Link href={"/login"}>
-          <CustomButton btnText={"로그인"} />
+          <CustomButton variant={"dark"} btnText={"로그인"} />
         </Link>
       </div>
     </div>

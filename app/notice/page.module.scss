@@ -16,6 +16,10 @@
       }
     }
     & .noticeBox {
+      & .postBtnWrapper {
+        display: flex;
+        justify-content: end;
+      }
       & .pagenationWrapper {
         display: flex;
         justify-content: center;

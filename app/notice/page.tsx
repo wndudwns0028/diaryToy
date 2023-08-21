@@ -1,12 +1,8 @@
-import { MongoClient } from "mongodb";
 import styles from "./page.module.scss";
-import BoardTable from "../components/BootStrap/BoardTable";
 import Paginations from "../components/BootStrap/Pagination";
-import { SSRProvider } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { connectDB } from "@/util/database";
-import { BoardType } from "../types/boardTypes";
 import NoticeWrapper from "./NoticeWrapper";
+import CustomButton from "../components/BootStrap/CustomButton";
+import Link from "next/link";
 
 export default function Notice() {
   return (
@@ -19,6 +15,11 @@ export default function Notice() {
         <div className={styles.noticeBox}>
           <div className={styles.tableWrapper}>
             <NoticeWrapper />
+          </div>
+          <div className={styles.postBtnWrapper}>
+            <Link href={"/notice/write"}>
+              <CustomButton variant={"danger"} btnText={"공지 등록"} />
+            </Link>
           </div>
           <div className={styles.pagenationWrapper}>
             <Paginations />
