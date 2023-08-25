@@ -1,24 +1,27 @@
-import connectDB from "@/lib/db";
-import UserModel from "@/app/models/User";
+import User from "@/models/user";
+import { connectDB } from "@/util/database";
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 
-connectDB();
-
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const { email, password, name } = req.body;
-  console.log("저장");
+export async function POST(req: Request, res: Response) {
   try {
-    const existingUser = await UserModel.findOne({ email });
-    console.log("유효 선언");
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
-    }
+    const { name, email, password } = await req.json();
+    const hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
+    const db = (await connectDB).db("User");
+    let result = db
+      .collection("users")
+      .insertOne({ name, email, password: hashedPassword });
 
-    const user = new UserModel({ name, email, password });
-    await user.save();
-    return res.status(201).json({ message: "Signup successful" });
+    return NextResponse.json(
+      { message: "사용자가 등록되었습니다." },
+      { status: 201 }
+    );
   } catch (error) {
-    console.error("Error while signing up:", error);
-    return res.status(500).json({ message: "Signup failed" });
+    return NextResponse.json(
+      { message: "사용자 등록 중 오류가 발생했습니다." },
+      { status: 500 }
+    );
   }
 }

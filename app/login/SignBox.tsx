@@ -6,9 +6,12 @@ import axios from "axios";
 
 export default function SignBox() {
   const [isRightPanelActive, setRightPanelActive] = useState<boolean>(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  console.log(name, password, email);
 
   const handleSignUpClick = () => {
     setRightPanelActive(true);
@@ -21,11 +24,31 @@ export default function SignBox() {
   const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(1);
-    fetch("/api/auth/signup", {
-      method: "POST",
-      body: JSON.stringify({ name: name, email: email, password: password }),
-    });
+    if (!name || !email || !password) {
+      setError("모든 정보를 입력하지 않았습니다.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (res.ok) {
+        const form = event.target as HTMLFormElement;
+        form.reset();
+      }
+    } catch (error) {
+      console.log("사용자 등록 중 오류 발생: " + error);
+    }
   };
   return (
     <div className="pageContainer">
