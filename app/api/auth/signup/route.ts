@@ -1,18 +1,16 @@
-import User from "@/models/user";
-import { connectDB } from "@/util/database";
+import connectDB from "@/util/database";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import User from "@/app/models/User";
 
 export async function POST(req: Request, res: Response) {
   try {
     const { name, email, password } = await req.json();
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
-    const db = (await connectDB).db("User");
-    let result = db
-      .collection("users")
-      .insertOne({ name, email, password: hashedPassword });
+
+    await connectDB();
+    await User.create({ name, email, password: hashedPassword });
 
     return NextResponse.json(
       { message: "사용자가 등록되었습니다." },

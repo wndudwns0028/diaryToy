@@ -1,20 +1,25 @@
 import mongoose from "mongoose";
 
-import { MongoClient } from "mongodb";
-// Connect MongoDB
-const url = process.env.MONGODB_URI;
+const DB_URI = process.env.MONGODB_URI || "";
 
-if (!url) {
-  throw new Error("The MONGODB_URL environment variable is not defined");
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
-let connectDB: Promise<MongoClient>;
 
-if (process.env.NODE_ENV === "development") {
-  if (!global._mongo) {
-    global._mongo = new MongoClient(url).connect();
+async function dbConnect() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .set({ debug: true, strictQuery: false })
+      .connect(`${DB_URI}`)
+      .then((mongoose) => mongoose);
   }
-  connectDB = global._mongo;
-} else {
-  connectDB = new MongoClient(url).connect();
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
-export { connectDB };
+
+export default dbConnect;
