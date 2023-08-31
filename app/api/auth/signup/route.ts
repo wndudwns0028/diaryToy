@@ -9,7 +9,7 @@ export async function POST(req: Request, res: Response) {
     const { name, email, password } = await req.json();
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await connectDB();
+    await connectDB("User");
     await User.create({ name, email, password: hashedPassword });
 
     return NextResponse.json(
