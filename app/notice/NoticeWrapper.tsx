@@ -10,6 +10,7 @@ export default function NoticeWrapper() {
     async function fetchData() {
       const res = await fetch("/api/board/notice");
       const data = await res.json();
+      console.log("console" + data);
       setBoardList(data);
     }
 

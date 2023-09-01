@@ -1,5 +1,6 @@
 "use client";
 import { BoardTableProps, BoardType } from "@/types/boardTypes";
+import Link from "next/link";
 import { SSRProvider } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
@@ -18,7 +19,16 @@ export default function BoardTable({ boardList }: BoardTableProps) {
         {boardList.map((board, i) => (
           <tr key={i}>
             <td style={{ textAlign: "center" }}>{i + 1}</td>
-            <td>{board.title}</td>
+
+            <td>
+              <Link
+                href={`/notice/${board._id}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                {board.title}
+              </Link>
+            </td>
+
             <td style={{ textAlign: "center" }}>{board.date}</td>
             <td style={{ textAlign: "center" }}>{board.views}</td>
           </tr>
