@@ -9,5 +9,5 @@ interface CustomButtonProps {
 
 export default function CustomButton(props: CustomButtonProps) {
   const { btnText, variant } = props;
-  return <Button variant={props.variant}>{props.btnText}</Button>;
+  return <Button variant={variant}>{btnText}</Button>;
 }

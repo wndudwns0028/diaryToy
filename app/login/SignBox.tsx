@@ -1,8 +1,11 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./SignBox.css";
 import axios from "axios";
+import SimpleModal from "../components/Utils/SimpleModal";
+import { useRouter } from "next/navigation";
+import { Badge, BadgeProps } from "react-bootstrap";
 
 export default function SignBox() {
   // states 변수 등록
@@ -11,6 +14,11 @@ export default function SignBox() {
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [isOpen, setOpen] = useState(false);
+  const errorRef = useRef<HTMLDivElement>();
+
+  // routing 변수
+  const router = useRouter();
 
   // 이벤트 함수 목록
   // 로그인 창 애니메이션
@@ -21,6 +29,27 @@ export default function SignBox() {
   const handleSignInClick = useCallback(() => {
     setRightPanelActive(false);
   }, []);
+  // error badge 애니메이션
+  const animateBadge = () => {
+    if (errorRef.current) {
+      const { current } = errorRef;
+      current.style.transition = "transform 0.3s ease-out";
+      current.style.transform = "translateX(-20px)";
+      setTimeout(() => {
+        current.style.transform = "translateX(20px)";
+        setTimeout(() => {
+          current.style.transform = "translateX(0)";
+        }, 50);
+      }, 50);
+    }
+  };
+
+  // setState to Empty Function
+  async function setEmptyState() {
+    setName("");
+    setEmail("");
+    setPassword("");
+  }
 
   // api 요청 메모이제이션
   const apiRequestBody = useMemo(
@@ -40,6 +69,7 @@ export default function SignBox() {
 
       if (!name || !email || !password) {
         setError("모든 정보를 입력하지 않았습니다.");
+        animateBadge();
         return;
       }
 
@@ -52,10 +82,13 @@ export default function SignBox() {
           body: apiRequestBody,
         });
 
-        if (res.ok) {
-          console.log("확인");
-          const form = event.target as HTMLFormElement;
-          form.reset();
+        if (res.status === 201) {
+          await setEmptyState();
+          setOpen(true);
+          setRightPanelActive(false);
+        } else if (res.status === 501) {
+          setError("중복된 이메일입니다.");
+          animateBadge();
         }
       } catch (error) {
         console.log("사용자 등록 중 오류 발생: " + error);
@@ -71,6 +104,12 @@ export default function SignBox() {
         }`}
         id="container"
       >
+        <SimpleModal
+          title="회원가입 성공!"
+          message="회원가입에 성공하셨습니다. 로그인해주십시오."
+          show={isOpen}
+          onHide={() => setOpen(false)}
+        />
         <div className="form-container sign-up-container">
           <form onSubmit={handleSignup}>
             <h1>회원정보입력</h1>
@@ -93,6 +132,14 @@ export default function SignBox() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
+            <div ref={errorRef}>
+              <Badge
+                style={{ paddingBlock: "0.6em", paddingInline: "2em" }}
+                bg="danger"
+              >
+                {error}
+              </Badge>
+            </div>
             <br />
             <button type="submit">회원가입</button>
           </form>

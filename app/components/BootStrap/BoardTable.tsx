@@ -1,5 +1,5 @@
 "use client";
-import { BoardTableProps, BoardType } from "@/app/types/boardTypes";
+import { BoardTableProps, BoardType } from "@/types/boardTypes";
 import { SSRProvider } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 

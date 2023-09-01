@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { BoardType } from "../types/boardTypes";
+import { BoardType } from "../../types/boardTypes";
 import BoardTable from "../components/BootStrap/BoardTable";
 
 export default function NoticeWrapper() {
