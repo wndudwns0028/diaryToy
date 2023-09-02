@@ -1,7 +1,6 @@
 "use client";
 import { BoardTableProps, BoardType } from "@/types/boardTypes";
 import Link from "next/link";
-import { SSRProvider } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
 export default function BoardTable({ boardList }: BoardTableProps) {

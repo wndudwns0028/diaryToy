@@ -11,13 +11,13 @@ export default function BoardNotice({
   params: { boardId: string };
 }) {
   const [boardData, setBoardData] = useState<BoardType>();
-  async function fetchData() {
-    const res = await fetch(`/api/board/notice/${params.boardId}`);
-    const data = await res.json();
-    console.log("console" + data);
-    setBoardData(data);
-  }
   useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(`/api/board/notice/${params.boardId}`);
+      const data = await res.json();
+      console.log("console" + data);
+      setBoardData(data);
+    }
     fetchData();
   }, []);
 

@@ -11,7 +11,6 @@ export interface INotices extends Document {
 
 const NoticesSchema: Schema = new mongoose.Schema(
   {
-    _id: { type: ObjectId, required: true, unique: true },
     title: { type: String, required: true },
     content: { type: String, required: true },
     views: { type: Number, required: true },

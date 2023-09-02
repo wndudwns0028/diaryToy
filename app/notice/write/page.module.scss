@@ -39,18 +39,19 @@
       & .editor {
         min-height: 80vh;
         height: auto;
-        border: 1.5px solid rgb(194, 194, 194);
-        padding: 2em;
-        border-radius: 7px;
+      }
+      & .fileAddArea {
+        margin-top: 3%;
       }
     }
     & .btnGroup {
+      width: 70%;
       height: 10%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgb(123, 95, 160);
-      margin-block: 5em;
+      margin-block: 3em;
+      margin-left: 15%;
     }
   }
 }
