@@ -6,14 +6,14 @@ import BoardTable from "../components/BootStrap/BoardTable";
 export default function NoticeWrapper() {
   const [boardList, setBoardList] = useState<BoardType[]>([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/api/board/notice");
-      const data = await res.json();
-      console.log("console" + data);
-      setBoardList(data);
-    }
+  async function fetchData() {
+    const res = await fetch("/api/board/notice");
+    const data = await res.json();
+    console.log("console" + data);
+    setBoardList(data);
+  }
 
+  useEffect(() => {
     fetchData();
   }, []);
   return (

@@ -31,6 +31,6 @@ export const getAllNotices = async () => {
 };
 
 export const getOneNotice = async (id: string) => {
-  const notice = await Notice.findById(id);
+  const notice = await Notice.findById(new ObjectId(id));
   return notice;
 };
