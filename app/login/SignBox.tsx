@@ -6,9 +6,12 @@ import axios from "axios";
 import SimpleModal from "../components/Utils/SimpleModal";
 import { useRouter } from "next/navigation";
 import { Badge, BadgeProps } from "react-bootstrap";
+import { signIn } from "next-auth/react";
 
 export default function SignBox() {
-  // states 변수 등록
+  // Session 로그인 정보
+
+  // Register states 변수 등록
   const [isRightPanelActive, setRightPanelActive] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -17,6 +20,10 @@ export default function SignBox() {
   const [isOpen, setOpen] = useState(false);
   const errorRef = useRef<HTMLDivElement>();
 
+  // Login states 변수 등록
+  const [loginEmail, setloginEmail] = useState<string>("");
+  const [loginPassword, setloginPassword] = useState<string>("");
+  const [loginError, setLoginError] = useState<string>("");
   // routing 변수
   const router = useRouter();
 
@@ -85,7 +92,6 @@ export default function SignBox() {
         if (res.status === 201) {
           await setEmptyState();
           setOpen(true);
-          setRightPanelActive(false);
         } else if (res.status === 501) {
           setError("중복된 이메일입니다.");
           animateBadge();
@@ -96,6 +102,26 @@ export default function SignBox() {
     },
     [apiRequestBody, name, email, password]
   );
+  // 로그인 함수
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const res = await signIn("credentials", {
+        loginEmail,
+        loginPassword,
+        redirect: false,
+      });
+
+      if (res.error) {
+        setLoginError("로그인 정보가 일치하지 않습니다.");
+      }
+
+      router.push("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="pageContainer">
       <div
@@ -108,8 +134,12 @@ export default function SignBox() {
           title="회원가입 성공!"
           message="회원가입에 성공하셨습니다. 로그인해주십시오."
           show={isOpen}
-          onHide={() => setOpen(false)}
+          onHide={() => {
+            setOpen(false);
+            setRightPanelActive(false);
+          }}
         />
+        {/* Register */}
         <div className="form-container sign-up-container">
           <form onSubmit={handleSignup}>
             <h1>회원정보입력</h1>
@@ -144,13 +174,34 @@ export default function SignBox() {
             <button type="submit">회원가입</button>
           </form>
         </div>
+        {/* Login */}
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form onSubmit={handleSignIn}>
             <h1>로그인</h1>
-            <input type="text" placeholder="아이디 입력" />
-            <input type="password" placeholder="비밀번호 입력" />
+            <input
+              type="text"
+              placeholder="이메일 입력"
+              onChange={(e) => setloginEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="비밀번호 입력"
+              onChange={(e) => setloginPassword(e.target.value)}
+            />
+            <div ref={errorRef}>
+              <Badge
+                style={{
+                  marginTop: "1em",
+                  paddingBlock: "0.6em",
+                  paddingInline: "2em",
+                }}
+                bg="danger"
+              >
+                {loginError}
+              </Badge>
+            </div>
             <a href="#">비밀번호 찾기</a>
-            <button>로그인하기</button>
+            <button type="submit">로그인하기</button>
           </form>
         </div>
         <div className="overlay-container">

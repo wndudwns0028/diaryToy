@@ -11,7 +11,8 @@ export async function POST(req: Request, res: Response) {
 
     await connectDB("User");
     const user = await User.findOne({ email });
-    if (user.length === 0) {
+    console.log(user);
+    if (user === null) {
       // 사용가능
       await User.create({ name, email, password: hashedPassword });
       return NextResponse.json(
