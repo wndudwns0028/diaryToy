@@ -1,6 +1,8 @@
+@import "styles/variables.scss";
+
 .pageContainer {
   width: 1920px;
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,9 +12,7 @@
     height: 70%;
     background-color: rgb(228, 80, 75);
     border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include makeCenterElements;
     font-size: 70px;
     font-weight: 700;
   }

@@ -24,7 +24,13 @@ const NoticesSchema: Schema = new mongoose.Schema(
 
 export const Notice =
   models.Notice || mongoose.model("Notice", NoticesSchema, "notice");
+
 export const getAllNotices = async () => {
   const notices = await Notice.find();
   return notices;
+};
+
+export const getOneNotice = async (id: string) => {
+  const notice = await Notice.findById(id);
+  return notice;
 };

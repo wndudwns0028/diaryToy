@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.pageContainer {
+  @include pageContainerSize;
+  height: 95vh;
+  & .pageBox {
+    @include pageBoxSize;
+    & .routeBox {
+      width: 80%;
+      height: 3em;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    & .titleBox {
+      height: 10%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      & .titleText {
+        font-size: 2.5em;
+      }
+    }
+    & .infoBox {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      & .infoWrapper {
+        width: 15%;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 2em;
+      }
+    }
+  }
+}

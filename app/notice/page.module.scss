@@ -1,11 +1,10 @@
+@import "../styles/variables.scss";
+
 .pageContainer {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include makeCenterElements;
   & .pageBox {
-    width: 65%;
-    height: 90%;
+    @include pageBoxSize;
     & .titleBox {
       height: 15%;
       display: flex;
@@ -18,7 +17,7 @@
     & .noticeBox {
       & .postBtnWrapper {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
       }
       & .pagenationWrapper {
         display: flex;

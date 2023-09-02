@@ -1,0 +1,16 @@
+@mixin makeCenterElements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// page Container
+// height는 페이지마다 가변적으로 설정
+@mixin pageContainerSize {
+  width: 100%;
+  @include makeCenterElements;
+}
+// page Box
+@mixin pageBoxSize {
+  width: 65%;
+  height: 90%;
+}
