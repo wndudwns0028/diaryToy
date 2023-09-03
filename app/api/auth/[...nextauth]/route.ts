@@ -27,7 +27,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         const { loginEmail, loginPassword } = credentials;
         try {
-          await connectDB("User");
+          await connectDB();
           const user = await User.findOne({ email: loginEmail });
           console.log(user);
           if (!user) {

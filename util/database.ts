@@ -8,13 +8,13 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-async function dbConnect(dbName: string) {
+async function dbConnect() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
     cached.promise = mongoose
       .set({ debug: true, strictQuery: false })
-      .connect(`${DB_URI}${dbName}`)
+      .connect(DB_URI)
       .then((mongoose) => mongoose);
   }
 
