@@ -3,7 +3,6 @@ import styles from "./Navbar.module.scss";
 import { useSession } from "next-auth/react";
 import LoginBtn from "./LoginBtn";
 import CustomButton from "../BootStrap/CustomButton";
-import UserLoggedIn from "./UserLoggedIn";
 import AccountBox from "./AccountBox";
 
 export default function Navbar() {

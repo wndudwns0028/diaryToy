@@ -1,11 +1,17 @@
 "use client";
-import { SimpleModalType } from "@/types/componentTypes";
-import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import ReactModal from "react-modal";
 
-const SimpleModal = (props: SimpleModalType) => {
-  const { show, title, message, onHide } = props;
+import { Button, Modal } from "react-bootstrap";
+
+type PromptModalType = {
+  title: string;
+  message: string;
+  onConfirm: () => void;
+  onClose: () => void;
+  show: boolean;
+};
+
+export default function PromptModal(props: PromptModalType) {
+  const { show, title, message, onConfirm, onClose } = props;
   return (
     <Modal
       {...props}
@@ -20,9 +26,13 @@ const SimpleModal = (props: SimpleModalType) => {
         <p>{message}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>닫기</Button>
+        <Button onClick={onConfirm} variant="danger">
+          확인
+        </Button>
+        <Button onClick={onClose} variant="outline-danger">
+          취소
+        </Button>
       </Modal.Footer>
     </Modal>
   );
-};
-export default SimpleModal;
+}

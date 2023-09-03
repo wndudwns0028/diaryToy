@@ -1,4 +1,4 @@
-import { getOneNotice } from "@/app/models/Notices";
+import { Notice, getOneNotice } from "@/app/models/Notices";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -13,4 +13,12 @@ export async function GET(
     await notice.save();
   }
   return NextResponse.json(notice);
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { boardId: string } }
+) {
+  const res = await Notice.findByIdAndDelete(params.boardId);
+  return NextResponse.json(res);
 }
