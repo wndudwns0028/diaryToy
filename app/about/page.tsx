@@ -10,7 +10,7 @@ export default function About() {
         </div>
         <div className="divideLine" />
       </div>
-      <div className={styles.textBox}>test</div>
+      <div className={styles.textBox}>설명글</div>
       <div className={styles.mapBox}>
         <KakaoMap />
       </div>

@@ -24,8 +24,8 @@ export default function KakaoMap() {
   }, []);
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <div id="mapContainer" style={{ width: "500px", height: "400px" }} />
+    <div className={styles.mapBox}>
+      <div id="mapContainer" className={styles.kakaoMap} />
     </div>
   );
 }
