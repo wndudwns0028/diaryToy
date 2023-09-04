@@ -8,4 +8,6 @@ export type BoardType = {
 
 export interface BoardTableProps {
   boardList: BoardType[];
+  currentPage: number;
+  itemsCountPerPage: number;
 }

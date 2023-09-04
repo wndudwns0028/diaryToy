@@ -3,7 +3,12 @@ import { BoardTableProps, BoardType } from "@/types/boardTypes";
 import Link from "next/link";
 import Table from "react-bootstrap/Table";
 
-export default function BoardTable({ boardList }: BoardTableProps) {
+export default function BoardTable({
+  boardList,
+  currentPage,
+  itemsCountPerPage,
+}: BoardTableProps) {
+  const startIndex = (currentPage - 1) * itemsCountPerPage;
   return (
     <Table hover>
       <thead>
@@ -17,7 +22,7 @@ export default function BoardTable({ boardList }: BoardTableProps) {
       <tbody>
         {boardList.map((board, i) => (
           <tr key={i}>
-            <td style={{ textAlign: "center" }}>{i + 1}</td>
+            <td style={{ textAlign: "center" }}>{startIndex + i + 1}</td>
 
             <td>
               <Link
