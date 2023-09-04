@@ -24,7 +24,7 @@ export default function Navbar() {
         <Link href={"/notice"} className={styles.menuText}>
           공지사항
         </Link>
-        <Link href={"/notice"} className={styles.menuText}>
+        <Link href={"/about"} className={styles.menuText}>
           서비스 소개
         </Link>
       </div>
