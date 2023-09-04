@@ -1,65 +1,29 @@
-pipeline{
-  agent any
-
-  environment{
-    HOME = '.'
-  }
-
-  options {
-    disableConcurrentBuilds()
-  }
-
-  stages {
-      // 레포지토리를 다운로드 받음
-      stage('Prepare') {
-        agent any
-        steps {
-            echo 'Clonning Repository'
-
-            checkout scm
-        }
-      }
-      stage('Build&Push Docker Image') {
-        agent any
-
-        steps {
-          echo 'Build&Push Image'
-
-          script {
-            def folders = []
-            sh(returnStdout: true, script: "ls ./src").split().each {
-              folders << it
-            }
-            folders.each { item ->
-              if (item == "cartservice") {
-                def app = docker.build("wndudwns0028/${item}", "./src/${item}/src")
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-credential') {
-                  app.push("${env.BUILD_NUMBER}")
-                  app.push("latest")
-                }
-              } else {
-                def app = docker.build("wndudwns0028/${item}", "./src/${item}")
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-credential') {
-                  app.push("${env.BUILD_NUMBER}")
-                  app.push("latest")
-                }
-              }
-            }
-          }
-        }
-      }
-      stage('Helm Repo Update') {
-        steps {
-         git credentialsId: 'jenkins-token',
-           url: 'https://github.com/goorm-k8s-team1/helm-chart.git',
-           branch: 'main'
-         withCredentials([gitUsernamePassword(credentialsId: 'jenkins-token', gitToolName: 'git-tool')]) {
-           sh "helm template micro-service .  --set images.tag=${env.BUILD_NUMBER} --namespace micro-service --dry-run > kubernetes-manifests/kubernetes-manifests.yaml"
-           sh 'git add kubernetes-manifests/kubernetes-manifests.yaml'
-           sh "git commit -m 'update version ${env.BUILD_NUMBER}'"
-           sh 'git push origin main'
+node {
+     stage('Clone repository') {
+         checkout scm
+     }
+     stage('Build image') {
+         app = docker.build("wndudwns0028/diary")
+     }
+     stage('Push image') {
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+             app.push("${env.BUILD_NUMBER}")
+             app.push("latest")
          }
-        }
-      }
+     }
+ }
+
+
+
+
+#변경점
+     stage('Build image') {
+         app = docker.build("wndudwns0028/diary") #Push Image 단계에서 빌드번호를 붙이기 때문에 옵션 제거
+     }
+     stage('Push image') {
+         docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins-credential') #업로드할 레지스트리 정보, Jenkins Credentials ID {
+             app.push("${env.BUILD_NUMBER}") #image에 빌드번호를 태그로 붙인 후 Push
+             app.push("latest") #image에 latest를 태그로 붙인 후 Push
+     }
   }
 }
