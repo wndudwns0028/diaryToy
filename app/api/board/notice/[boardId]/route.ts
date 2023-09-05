@@ -20,5 +20,5 @@ export async function DELETE(
   { params }: { params: { boardId: string } }
 ) {
   const res = await Notice.findByIdAndDelete(params.boardId);
-  return NextResponse.json(res);
+  return NextResponse.json({ message: "삭제 성공" }, { status: 200 });
 }

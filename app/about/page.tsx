@@ -14,6 +14,7 @@ export default function About() {
       <div className={styles.mapBox}>
         <KakaoMap />
       </div>
+      <div className={styles.textBox}>설명글</div>
     </div>
   );
 }

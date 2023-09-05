@@ -7,6 +7,7 @@ import { BoardType } from "@/types/boardTypes";
 import { Button } from "react-bootstrap";
 import SimpleModal from "@/app/components/Utils/SimpleModal";
 import PromptModal from "@/app/components/Utils/PromptModal";
+import { useRouter } from "next/navigation";
 
 export default function BoardNotice({
   params,
@@ -19,6 +20,7 @@ export default function BoardNotice({
   const [titleText, setTitleText] = useState<string>("");
   const [contentText, setContentText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   // 게시글 삭제
   function handleDelete() {
@@ -26,6 +28,27 @@ export default function BoardNotice({
     setTitleText("게시글 삭제");
     setContentText("정말 삭제하시겠습니까?");
   }
+
+  const deleteData = async () => {
+    try {
+      const res = await fetch(`/api/board/notice/${params.boardId}`, {
+        method: "DELETE",
+        body: JSON.stringify({
+          boardId: params.boardId,
+        }),
+      });
+      if (res.status === 200) {
+        router.push("/notice");
+      } else {
+        console.log("Error deleting board data");
+      }
+    } catch (err) {
+      console.error("Error deleting board data:", err);
+    } finally {
+      setOpen(false);
+    }
+  };
+
   function handlePut() {
     setOpen(true);
     setTitleText("게시글 수정");
@@ -46,12 +69,10 @@ export default function BoardNotice({
   return (
     <div className={styles.pageContainer}>
       <PromptModal
-        title={`${titleText}`}
-        message={`${contentText}`}
+        title={titleText}
+        message={contentText}
         show={isOpen}
-        onConfirm={() => {
-          setOpen(false);
-        }}
+        isconfirm={deleteData}
         onClose={() => {
           setOpen(false);
         }}

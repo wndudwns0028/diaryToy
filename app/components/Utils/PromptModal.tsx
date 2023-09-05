@@ -5,13 +5,13 @@ import { Button, Modal } from "react-bootstrap";
 type PromptModalType = {
   title: string;
   message: string;
-  onConfirm: () => void;
+  isconfirm: () => Promise<void>;
   onClose: () => void;
-  show: boolean;
+  show?: boolean;
 };
 
 export default function PromptModal(props: PromptModalType) {
-  const { show, title, message, onConfirm, onClose } = props;
+  const { show, title, message, isconfirm, onClose } = props;
   return (
     <Modal
       {...props}
@@ -26,7 +26,7 @@ export default function PromptModal(props: PromptModalType) {
         <p>{message}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onConfirm} variant="danger">
+        <Button onClick={isconfirm} variant="danger">
           확인
         </Button>
         <Button onClick={onClose} variant="outline-danger">
