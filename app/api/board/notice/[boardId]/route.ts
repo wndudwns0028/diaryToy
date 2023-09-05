@@ -1,4 +1,5 @@
 import { Notice, getOneNotice } from "@/app/models/Notices";
+import { BoardType } from "@/types/boardTypes";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -21,4 +22,12 @@ export async function DELETE(
 ) {
   const res = await Notice.findByIdAndDelete(params.boardId);
   return NextResponse.json({ message: "삭제 성공" }, { status: 200 });
+}
+
+export async function PUT(
+  request: Request,
+  { params }: { params: { boardData: BoardType } }
+) {
+  const res = await Notice.replaceOne(params.boardData);
+  return NextResponse.json({ message: "수정 성공" }, { status: 200 });
 }

@@ -65,6 +65,7 @@ export default function SignBox() {
         name: name,
         email: email,
         password: password,
+        rule: "user",
       }),
     [name, email, password]
   );
@@ -133,7 +134,7 @@ export default function SignBox() {
       >
         <SimpleModal
           title="회원가입 성공!"
-          message="회원가입에 성공하셨습니다. 로그인해주십시오."
+          message="회원가입에 성공하셨습니다."
           show={isOpen}
           onHide={() => {
             setOpen(false);

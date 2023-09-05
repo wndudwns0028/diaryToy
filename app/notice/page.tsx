@@ -6,8 +6,11 @@ import CustomButton from "../components/BootStrap/CustomButton";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BoardType } from "@/types/boardTypes";
+import { useSession } from "next-auth/react";
 
 export default function Notice() {
+  // Session State
+  const { data: session } = useSession();
   const [boardList, setBoardList] = useState<BoardType[]>([]);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -60,6 +63,7 @@ export default function Notice() {
             />
           </div>
           <div className={styles.postBtnWrapper}>
+            {session && session.user.name}
             <Link href={"/notice/write"}>
               <CustomButton variant={"danger"} btnText={"공지 등록"} />
             </Link>

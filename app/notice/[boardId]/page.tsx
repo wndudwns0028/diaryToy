@@ -49,11 +49,6 @@ export default function BoardNotice({
     }
   };
 
-  function handlePut() {
-    setOpen(true);
-    setTitleText("게시글 수정");
-    setContentText("게시글을 수정하시겠습니까?");
-  }
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -114,7 +109,9 @@ export default function BoardNotice({
             variant="danger"
             size="lg"
             style={{ marginInline: "1%" }}
-            onClick={handlePut}
+            onClick={() => {
+              router.push(`/notice/update/${params.boardId}`);
+            }}
           >
             글 수정
           </Button>
