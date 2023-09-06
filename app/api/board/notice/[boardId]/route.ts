@@ -24,10 +24,8 @@ export async function DELETE(
   return NextResponse.json({ message: "삭제 성공" }, { status: 200 });
 }
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { boardData: BoardType } }
-) {
-  const res = await Notice.replaceOne(params.boardData);
+export async function PUT(request: Request, params: { boardId: string }) {
+  const { title, content } = await request.json();
+  await Notice.replaceOne({ _id: params.params.boardId }, { title, content });
   return NextResponse.json({ message: "수정 성공" }, { status: 200 });
 }

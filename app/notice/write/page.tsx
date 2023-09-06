@@ -36,7 +36,6 @@ export default function Write() {
       try {
         const res = await fetch("/api/board/notice", {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json",
           },

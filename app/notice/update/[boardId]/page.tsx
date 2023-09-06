@@ -17,7 +17,28 @@ export default function Update({ params }: { params: { boardId: string } }) {
   const router = useRouter();
 
   // update 함수
-  function handleUpdate() {}
+  async function handleUpdate() {
+    try {
+      console.log("Client: " + boardData.title);
+      const res = await fetch(`/api/board/notice/${params.boardId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: boardData.title,
+          content: boardData.content,
+        }),
+      });
+      if (res.status === 200) {
+        const data = await res.json();
+        console.log(data.message);
+        setOpen(true);
+      }
+    } catch (err) {
+      console.error("Error deleting board data:", err);
+    }
+  }
 
   // fetch data
   useEffect(() => {
@@ -31,6 +52,14 @@ export default function Update({ params }: { params: { boardId: string } }) {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setBoardData((boardData) => ({
+      ...boardData,
+      title: titleText,
+      content: contentText,
+    }));
+  }, [titleText, contentText]);
 
   return (
     <div className={styles.pageContainer}>
