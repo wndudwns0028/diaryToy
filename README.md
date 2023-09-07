@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DIARYTOY
 
-## Getting Started
+### NEXT JS 활용 토이프로젝트
 
-First, run the development server:
+<div align="center">
+    <a href="http://thismypc.com/">
+        <img src="https://raw.githubusercontent.com/supunlakmal/thismypc/master/thisMyPCWeb/angular-deprecated/src/assets/images/logo/logo-mini.png" crossorigin>
+    </a>
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+<br />
+
+> <strong>프로젝트 목적</strong>: NEXT TS 프레임워크를 통해 서버사이드 렌더링의 활용, 서버 API 구성과 NoSQL DB 활용, NEXT-Auth와 같은 라이브러리 지식을 습득하는 것. 또한 이번에 stable된 13버전의 app 디렉토리 업데이트 내용을 프로젝트에 적용하는 것이 목적이다.
+
+![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
+
+## 서비스 구성
+
+|                                                                                          Desktop App Login                                                                                           |                                                                                         Desktop App Open                                                                                         |                                                                                      Web App computer hard drives                                                                                      |                                                                                   Web App computer hard drives Open                                                                                    |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/supunlakmal/thismypc/master/thisMyPCWeb/angular-deprecated/src/assets/images/screen/app-login.PNG" title="Desktop App  Login " width="100%" crossorigin> | <img src="https://raw.githubusercontent.com/supunlakmal/thismypc/master/thisMyPCWeb/angular-deprecated/src/assets/images/screen/app-home.PNG" title="Desktop App Open" width="100%" crossorigin> | <img src="https://raw.githubusercontent.com/supunlakmal/thismypc/master/thisMyPCWeb/angular-deprecated/src/assets/images/screen/web-system.PNG" title="Web App  PC  Drivers" width="100%" crossorigin> | <img src="https://raw.githubusercontent.com/supunlakmal/thismypc/master/thisMyPCWeb/angular-deprecated/src/assets/images/screen/web-system.PNG" title="Web App  PC  Drivers" width="100%" crossorigin> |
+
+## 프로젝트 폴더 구조
+
+    .
+    ├── .github/ISSUE_TEMPLATE
+    ├── doc                          # All Api doc and gif files
+    ├── thisMyPCApp                  # Electron JS app folder
+    ├── thisMyPCServer               # Node JS MongoDB and Express JS server folder
+    ├── thisMyPCWeb                  # Angular website folder
+    ├── .gitignore
+    ├── .gitlab-ci.yml
+    ├── CODE_OF_CONDUCT.md
+    ├── LICENSE
+    └── README.md
+
+## 개발 설명
+
+#### Built With
+
+- [Node JS](https://nodejs.org/en/)
+- [GraphQL](http://graphql.org)
+
+#### Clone Project
+
+```shell
+git clone https://github.com/sub9707/diaryToy.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## REST API 구성
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### API Reference
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Web API             | URL                          | Description |
+| ------------------- | ---------------------------- | ----------- |
+| User Register       | /api/v1/user/register        | -           |
+| User Login          | /api/v1/user/login           | -           |
+| User Logout         | /api/v1/user/:userID/logout  | -           |
+| User Auth           | /api/v1/user/athentication   | -           |
+| User Info           | /api/v1/user/:userID         | -           |
+| User Online PC List | /api/v1/user/computer/online | -           |
 
-## Learn More
+### App API
 
-To learn more about Next.js, take a look at the following resources:
+| APP API             | URL                                        | Description |
+| ------------------- | ------------------------------------------ | ----------- |
+| User Login From App | /api/v1/user/computer/login                | -           |
+| User Info           | /api/v1/user/:userID/computer/:computerKey | -           |
+| User Logout         | /api/v1/user/:userID/computer/logout       | -           |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MongoDB use as Database.

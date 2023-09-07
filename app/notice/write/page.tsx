@@ -52,7 +52,6 @@ export default function Write() {
     [apiRequestBody]
   );
 
-  function cancelHandler() {}
   return (
     <div className={styles.pageContainer}>
       <SimpleModal

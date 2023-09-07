@@ -9,7 +9,7 @@ const SimpleModal = (props: SimpleModalType) => {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -20,7 +20,9 @@ const SimpleModal = (props: SimpleModalType) => {
         <p>{message}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>닫기</Button>
+        <Button variant={"danger"} onClick={onHide}>
+          닫기
+        </Button>
       </Modal.Footer>
     </Modal>
   );

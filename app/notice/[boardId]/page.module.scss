@@ -2,7 +2,7 @@
 
 .pageContainer {
   @include pageContainerSize;
-  height: 95vh;
+  height: auto;
   & .pageBox {
     @include pageBoxSize;
     & .routeBox {
@@ -33,8 +33,15 @@
       }
     }
     & .boardBox {
+      min-height: 50vh;
       line-height: 2em;
       font-size: large;
+      margin-bottom: 5%;
+    }
+    & .btnGroup {
+      display: flex;
+      justify-content: flex-end;
+      margin-block: 5%;
     }
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 import { NavDropdown } from "react-bootstrap";
 import { signOut } from "next-auth/react";
+import styles from "./UserLoggedIn.module.scss";
 
 type Propstype = {
   name: string;
@@ -9,14 +10,8 @@ type Propstype = {
 export default function UserLoggedIn(props: Propstype) {
   const { name } = props;
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <p style={{ marginTop: "1em" }}>환영합니다, </p>
+    <div className={styles.accountBox}>
+      <p className={styles.welcomeTag}>환영합니다, </p>
       <NavDropdown title={`${name}`}>
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -24,18 +19,13 @@ export default function UserLoggedIn(props: Propstype) {
         <NavDropdown.Divider />
         <NavDropdown.Item
           href="#action/3.4"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            color: "red",
-            fontWeight: "bolder",
-          }}
           onClick={() => signOut()}
+          className={styles.navDropdown}
         >
           로그아웃
         </NavDropdown.Item>
       </NavDropdown>
-      <p style={{ marginTop: "1em" }}>님! </p>
+      <p className={styles.welcomeTag}>님! </p>
     </div>
   );
 }

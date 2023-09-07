@@ -6,7 +6,7 @@ import User from "@/app/models/User";
 
 export async function POST(req: Request, res: Response) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, email, password, rule } = await req.json();
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await connectDB();
@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response) {
     console.log(user);
     if (user === null) {
       // 사용가능
-      await User.create({ name, email, password: hashedPassword });
+      await User.create({ name, email, password: hashedPassword, rule });
       return NextResponse.json(
         { message: "사용자가 등록되었습니다." },
         { status: 201 }
