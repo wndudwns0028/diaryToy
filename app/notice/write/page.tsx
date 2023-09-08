@@ -90,7 +90,9 @@ export default function Write() {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <div className={styles.fileAddArea}>첨부파일 : 준비중</div>
+          <div className={styles.fileAddArea}>
+            첨부파일 (준비중) : <input type="file" />
+          </div>
         </div>
         <div className={styles.btnGroup}>
           <Button

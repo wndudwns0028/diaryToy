@@ -70,6 +70,26 @@ export default function SignBox() {
     [name, email, password]
   );
 
+  const chatSubmit = async () => {
+    try {
+      const res = await fetch("htts://api.chatengine.io/users/", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Private-key": process.env.CHATENGINE_KEY,
+        },
+      });
+      if (res.status === 200) {
+        console.log("챗 등록");
+      } else {
+        // Handle error
+        console.log("Error registering user: " + res.statusText);
+      }
+    } catch (error) {
+      console.log("사용자 등록 중 오류 발생: " + error);
+    }
+  };
+
   // 회원가입 함수
   const handleSignup = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
@@ -80,6 +100,8 @@ export default function SignBox() {
         animateBadge();
         return;
       }
+
+      await chatSubmit();
 
       try {
         const res = await fetch("/api/auth/signup", {

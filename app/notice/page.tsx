@@ -63,10 +63,11 @@ export default function Notice() {
             />
           </div>
           <div className={styles.postBtnWrapper}>
-            {session && session.user.name}
-            <Link href={"/notice/write"}>
-              <CustomButton variant={"danger"} btnText={"공지 등록"} />
-            </Link>
+            {session && (
+              <Link href={"/notice/write"}>
+                <CustomButton variant={"danger"} btnText={"공지 등록"} />
+              </Link>
+            )}
           </div>
           <div className={styles.pagenationWrapper}>
             <Paginations

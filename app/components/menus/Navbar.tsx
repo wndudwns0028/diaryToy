@@ -6,7 +6,6 @@ import CustomButton from "../BootStrap/CustomButton";
 import AccountBox from "./AccountBox";
 
 export default function Navbar() {
-  function handleLoginBtn() {}
   return (
     <div className={styles.navContainer}>
       <div className={styles.logoBox}>
