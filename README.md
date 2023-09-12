@@ -38,9 +38,6 @@
 
 #### Built With
 
-- [Node JS](https://nodejs.org/en/)
-- [GraphQL](http://graphql.org)
-
 #### Clone Project
 
 ```shell
@@ -71,3 +68,111 @@ git clone https://github.com/sub9707/diaryToy.git
 ## Database
 
 MongoDB use as Database.
+
+```
+diaryToy
+├─ .eslintrc.json
+├─ .gitignore
+├─ app
+│  ├─ about
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
+│  ├─ api
+│  │  ├─ auth
+│  │  │  ├─ signup
+│  │  │  │  └─ route.ts
+│  │  │  └─ [...nextauth]
+│  │  │     └─ route.ts
+│  │  ├─ board
+│  │  │  └─ notice
+│  │  │     ├─ route.ts
+│  │  │     └─ [boardId]
+│  │  │        └─ route.ts
+│  │  └─ chat
+│  │     ├─ route.ts
+│  │     └─ socketio.ts
+│  ├─ chat
+│  │  ├─ MyBox.tsx
+│  │  ├─ OtherBox.tsx
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
+│  ├─ community
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
+│  ├─ components
+│  │  ├─ BootStrap
+│  │  │  ├─ BoardTable.tsx
+│  │  │  ├─ CustomButton.tsx
+│  │  │  ├─ Pagination.tsx
+│  │  │  ├─ Slides.module.scss
+│  │  │  └─ Slides.tsx
+│  │  ├─ menus
+│  │  │  ├─ AccountBox.tsx
+│  │  │  ├─ Fonts.tsx
+│  │  │  ├─ FooterMenu.css
+│  │  │  ├─ FooterMenu.tsx
+│  │  │  ├─ LoginBtn.tsx
+│  │  │  ├─ Navbar.module.scss
+│  │  │  ├─ Navbar.tsx
+│  │  │  ├─ UserLoggedIn.module.scss
+│  │  │  └─ UserLoggedIn.tsx
+│  │  └─ Utils
+│  │     ├─ KakaoMap.module.scss
+│  │     ├─ KakaoMap.tsx
+│  │     ├─ PromptModal.tsx
+│  │     └─ SimpleModal.tsx
+│  ├─ favicon.ico
+│  ├─ globals.css
+│  ├─ layout.tsx
+│  ├─ login
+│  │  ├─ page.module.scss
+│  │  ├─ page.tsx
+│  │  ├─ SignBox.css
+│  │  └─ SignBox.tsx
+│  ├─ models
+│  │  ├─ Notices.ts
+│  │  └─ User.ts
+│  ├─ myDiary
+│  │  ├─ page.module.scss
+│  │  └─ page.tsx
+│  ├─ notice
+│  │  ├─ NoticeWrapper.tsx
+│  │  ├─ page.module.scss
+│  │  ├─ page.tsx
+│  │  ├─ update
+│  │  │  └─ [boardId]
+│  │  │     └─ page.tsx
+│  │  ├─ write
+│  │  │  ├─ page.module.scss
+│  │  │  └─ page.tsx
+│  │  └─ [boardId]
+│  │     ├─ page.module.scss
+│  │     └─ page.tsx
+│  ├─ page.module.scss
+│  ├─ page.tsx
+│  ├─ Provider.tsx
+│  └─ styles
+│     └─ variables.scss
+├─ functions
+│  ├─ .eslintrc.js
+│  ├─ .gitignore
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ src
+│  │  └─ index.ts
+│  ├─ tsconfig.dev.json
+│  └─ tsconfig.json
+├─ next.config.js
+├─ package-lock.json
+├─ package.json
+├─ tsconfig.json
+├─ types
+│  ├─ boardTypes.ts
+│  ├─ chat.d.ts
+│  ├─ componentTypes.ts
+│  ├─ global.d.ts
+│  ├─ mongodb.ts
+│  └─ userType.ts
+└─ util
+   └─ database.ts
+```

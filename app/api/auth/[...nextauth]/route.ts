@@ -5,7 +5,7 @@ import connectDB from "@/util/database";
 import User from "@/app/models/User";
 import bcrypt from "bcryptjs";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
