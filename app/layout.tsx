@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "공유 일기",
-  description: "알아서들 일기 쓰십쇼",
+  description: "함께 쓰는 공유 일기장",
 };
 
 export default function RootLayout({
