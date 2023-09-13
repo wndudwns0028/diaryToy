@@ -1,9 +1,9 @@
 import User from "@/app/models/User";
 import connectDB from "@/util/database";
 import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(req: NextApiRequest, { params }) {
+export async function GET(req: NextRequest, { params }) {
   const email = params.userEmail;
   try {
     await connectDB();

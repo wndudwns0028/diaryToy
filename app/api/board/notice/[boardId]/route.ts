@@ -3,7 +3,7 @@ import { BoardType } from "@/types/boardTypes";
 import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest, { params }) {
+export async function GET(req: NextRequest, { params }) {
   const notice = await getOneNotice(params.boardId);
   if (notice && !notice.isViewed) {
     // 이미 조회된 게시물이 아닌 경우에만 조회수 증가
@@ -14,7 +14,7 @@ export async function GET(req: NextApiRequest, { params }) {
   return NextResponse.json(notice);
 }
 
-export async function DELETE(request: Request, { params }) {
+export async function DELETE(request: NextRequest, { params }) {
   const res = await Notice.findByIdAndDelete(params.boardId);
   return NextResponse.json({ message: "삭제 성공" }, { status: 200 });
 }
