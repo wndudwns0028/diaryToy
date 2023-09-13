@@ -25,7 +25,7 @@ export default function NotFound() {
         <div className="number">4</div>
       </div>
 
-      <div className="text">Oops. The pageexist.</div>
+      <div className="text">존재하지 않는 페이지입니다</div>
       <a className="button" href="#">
         Back Home
       </a>
