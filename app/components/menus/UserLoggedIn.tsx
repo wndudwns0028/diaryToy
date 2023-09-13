@@ -13,8 +13,7 @@ export default function UserLoggedIn(props: Propstype) {
   const router = useRouter();
   return (
     <div className={styles.accountBox}>
-      <p className={styles.welcomeTag}>환영합니다, </p>
-      <NavDropdown title={`${name}`}>
+      <NavDropdown title={`환영합니다, ${name}님`}>
         <NavDropdown.Item
           onClick={() => {
             router.push("/chat");
@@ -33,7 +32,6 @@ export default function UserLoggedIn(props: Propstype) {
           로그아웃
         </NavDropdown.Item>
       </NavDropdown>
-      <p className={styles.welcomeTag}>님! </p>
     </div>
   );
 }

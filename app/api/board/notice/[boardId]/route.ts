@@ -3,11 +3,8 @@ import { BoardType } from "@/types/boardTypes";
 import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
-  const boardId = Array.isArray(req.query.boardId)
-    ? req.query.boardId[0]
-    : req.query.boardId;
-  const notice = await getOneNotice(boardId);
+export async function GET(req: NextApiRequest, { params }) {
+  const notice = await getOneNotice(params.boardId);
   if (notice && !notice.isViewed) {
     // 이미 조회된 게시물이 아닌 경우에만 조회수 증가
     notice.views += 1;
