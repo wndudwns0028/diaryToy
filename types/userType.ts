@@ -1,4 +1,6 @@
 export type UserInfoType = {
+  _id: string;
   email: string;
-  name: string;
+  password: string;
+  rule: string;
 };

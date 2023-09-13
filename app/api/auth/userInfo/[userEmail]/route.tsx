@@ -3,10 +3,8 @@ import connectDB from "@/util/database";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
-  const url = new URL(req.url);
-  const email = url.searchParams.get("userEmail");
-  console.log("server email: " + email);
+export async function GET(req: NextApiRequest, { params }) {
+  const email = params.userEmail;
   try {
     await connectDB();
     const user = await User.findOne({ email });

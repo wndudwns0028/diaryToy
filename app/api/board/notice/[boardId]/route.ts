@@ -17,15 +17,12 @@ export async function GET(req: NextApiRequest) {
   return NextResponse.json(notice);
 }
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { boardId: string } }
-) {
+export async function DELETE(request: Request, { params }) {
   const res = await Notice.findByIdAndDelete(params.boardId);
   return NextResponse.json({ message: "삭제 성공" }, { status: 200 });
 }
 
-export async function PUT(request: Request, params: { boardId: string }) {
+export async function PUT(request: Request, { params }) {
   const { title, content, views, date } = await request.json();
 
   await Notice.replaceOne(
