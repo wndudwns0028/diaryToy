@@ -1,4 +1,4 @@
-# DIARYTOY
+# DIARYTOY[진행중]
 
 ### NEXT JS 활용 토이프로젝트
 
