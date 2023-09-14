@@ -12,7 +12,6 @@
 
 > <strong>프로젝트 목적</strong>: NEXT TS 프레임워크를 통해 서버사이드 렌더링의 활용, 서버 API 구성과 NoSQL DB 활용, NEXT-Auth와 같은 라이브러리 지식을 습득하는 것. 또한 이번에 stable된 13버전의 app 디렉토리 업데이트 내용을 프로젝트에 적용하는 것이 목적이다.
 
-![Web Site System](https://raw.githubusercontent.com/supunlakmal/thismypc/master/doc/gifAnimations/web_site_system.gif)
 
 ## 서비스 구성
 
