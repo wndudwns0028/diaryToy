@@ -28,6 +28,8 @@ export default function Update({ params }: { params: { boardId: string } }) {
         body: JSON.stringify({
           title: boardData.title,
           content: boardData.content,
+          views: boardData.views,
+          date: boardData.date,
         }),
       });
       if (res.status === 200) {

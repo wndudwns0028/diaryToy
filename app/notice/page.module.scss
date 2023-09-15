@@ -2,6 +2,7 @@
 
 .pageContainer {
   height: 100vh;
+  margin-top: 8vh;
   @include makeCenterElements;
   & .pageBox {
     @include pageBoxSize;

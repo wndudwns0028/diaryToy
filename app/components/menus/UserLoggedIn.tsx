@@ -1,7 +1,8 @@
-"use client";
 import { NavDropdown } from "react-bootstrap";
 import { signOut } from "next-auth/react";
 import styles from "./UserLoggedIn.module.scss";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Propstype = {
   name: string;
@@ -9,11 +10,17 @@ type Propstype = {
 
 export default function UserLoggedIn(props: Propstype) {
   const { name } = props;
+  const router = useRouter();
   return (
     <div className={styles.accountBox}>
-      <p className={styles.welcomeTag}>환영합니다, </p>
-      <NavDropdown title={`${name}`}>
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+      <NavDropdown title={`환영합니다, ${name}님`}>
+        <NavDropdown.Item
+          onClick={() => {
+            router.push("/chat");
+          }}
+        >
+          쪽지
+        </NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
         <NavDropdown.Divider />
@@ -25,7 +32,6 @@ export default function UserLoggedIn(props: Propstype) {
           로그아웃
         </NavDropdown.Item>
       </NavDropdown>
-      <p className={styles.welcomeTag}>님! </p>
     </div>
   );
 }
