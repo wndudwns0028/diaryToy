@@ -21,6 +21,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.1",
     "bson": "^6.0.0",
+    "canvas": "^2.11.2",
     "cors": "^2.8.5",
     "dompurify": "^3.0.5",
     "eslint": "8.49.0",
