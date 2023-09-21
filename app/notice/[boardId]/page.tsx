@@ -8,6 +8,7 @@ import { Button } from "react-bootstrap";
 import SimpleModal from "@/app/components/Utils/SimpleModal";
 import PromptModal from "@/app/components/Utils/PromptModal";
 import { useRouter } from "next/navigation";
+import DOMPurify from "dompurify";
 
 export default function BoardNotice({
   params,
@@ -54,7 +55,6 @@ export default function BoardNotice({
       setIsLoading(true);
       const res = await fetch(`/api/board/notice/${params.boardId}`);
       const data = await res.json();
-      console.log("console" + data);
       setBoardData(data);
       setIsLoading(false);
     }
@@ -99,7 +99,20 @@ export default function BoardNotice({
           <p>게시글 불러오는 중..</p>
         ) : (
           <div className={styles.boardBox}>
-            <p>{boardData?.content}</p>
+            {/* <p>{boardData?.content}</p> */}
+            {process.browser && (
+              <div
+                style={{
+                  width: "60vw",
+                  whiteSpace: "normal",
+                }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(String(boardData?.content)),
+                }}
+              />
+            )}
+
+            {/* } */}
           </div>
         )}
         <p> 첨부파일: 준비중</p>

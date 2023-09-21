@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 
 type EditorProps = {
-  setContent: React.Dispatch<React.SetStateAction<number>>;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const QuillWrapper = dynamic(() => import("react-quill"), {
@@ -48,19 +48,12 @@ const formats = [
 ];
 
 export default function TextEditor(props: EditorProps) {
-  const { setValue, trigger } = useForm({
-    mode: "onChange", // onChange가 일어나면 알려줘
-  });
-  const onChangeContents = (value: string) => {
-    setValue("contents", value === "<p><br></p>" ? "" : value);
-    trigger("contents");
-  };
   return (
     <QuillWrapper
       theme="snow"
       id={"description"}
       placeholder={"내용을 입력해주세요"}
-      onChange={onChangeContents}
+      onChange={props.setContent}
       modules={modules}
       formats={formats}
       style={{ height: "75vh" }}
