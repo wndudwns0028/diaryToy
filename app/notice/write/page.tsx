@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import SimpleModal from "@/app/components/Utils/SimpleModal";
 import { useRouter } from "next/navigation";
+import TextEditor from "@/app/components/Utils/TextEditor";
 
 export default function Write() {
   // 게시물 정보 state
@@ -83,13 +84,9 @@ export default function Write() {
         <div className={styles.writingArea}>
           <h2 className={styles.title}>공지 내용</h2>
           <div className={styles.editor}>
-            <Form.Control
-              as="textarea"
-              placeholder="글 내용 작성"
-              style={{ height: "80vh" }}
-              onChange={(e) => setContent(e.target.value)}
-            />
+            <TextEditor setContent={setContent} />
           </div>
+
           <div className={styles.fileAddArea}>
             첨부파일 (준비중) : <input type="file" />
           </div>
