@@ -100,7 +100,6 @@ export default function Update({ params }: { params: { boardId: string } }) {
               <div className={styles.editor}>
                 <Form.Control
                   as="textarea"
-                  placeholder="글 내용 작성"
                   style={{ height: "80vh" }}
                   onChange={(e) => setContentText(e.target.value)}
                   defaultValue={boardData?.content}

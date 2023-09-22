@@ -11,3 +11,10 @@ export interface BoardTableProps {
   currentPage: number;
   itemsCountPerPage: number;
 }
+
+export type GalleryItemType = {
+  imageUrl: string;
+  title: string;
+  author: string;
+  groupName: string;
+};

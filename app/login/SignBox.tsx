@@ -140,6 +140,11 @@ export default function SignBox() {
         return;
       }
 
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ loginEmail, loginPassword })
+      );
+
       router.push("/");
     } catch (err) {
       console.log(err);
