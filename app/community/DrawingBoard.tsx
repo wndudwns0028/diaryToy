@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, MouseEvent, useEffect } from "react";
+import styles from "./page.module.scss";
 
 export default function DrawingBoard() {
   const [color, setColor] = useState<string>("black");
