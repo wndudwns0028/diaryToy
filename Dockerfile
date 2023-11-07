@@ -6,7 +6,7 @@ COPY . .
 
 # RUN yum install -y nodejs
 
-RUN npm install --force
+RUN npm install
 
 EXPOSE 3000
 
